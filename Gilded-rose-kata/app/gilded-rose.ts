@@ -1,11 +1,6 @@
 import {
     BACKSTAGE_PASS_DAY_LIMIT,
-    LIMIT_SELL_IN, ITEM_NAME,
-    MAX_QUALITY,
-    MIN_QUALITY,
-    QUALITY_UNIT,
-    SELL_IN_UNIT,
-    INITIAL_QUALITY
+    LIMIT_SELL_IN, ITEM_NAME
 } from "./constants"
 import { Item } from "./item"
 
@@ -41,7 +36,7 @@ export class GildedRose {
     }
 
     decreaseSellIn = (item: Item) => {
-        item.sellIn -= SELL_IN_UNIT
+        item.decreaseSellIn()
     }
 
     updateAgeBrieQuality = (item: Item) => {
@@ -63,15 +58,13 @@ export class GildedRose {
             this.increaseQuality(item);
         }
 
-        if (item.sellIn < LIMIT_SELL_IN) {
+        if (item.sellIn <= LIMIT_SELL_IN) {
             this.resetQuality(item);
         }
     }
 
     increaseQuality = (item: Item) => {
-        if (item.quality >= MAX_QUALITY) return
-
-        item.quality += QUALITY_UNIT
+        item.increaseQuality()
     }
 
     updateCommonItemQuality = (item: Item) => {
@@ -83,13 +76,11 @@ export class GildedRose {
     }
 
     decreaseQuality = (item: Item) => {
-        if (item.quality <= MIN_QUALITY) return
-
-        item.quality -= QUALITY_UNIT
+        item.decreaseQuality()
     }
 
     resetQuality = (item: Item) => {
-        item.quality = INITIAL_QUALITY
+        item.resetQuality()
     }
 
 }
