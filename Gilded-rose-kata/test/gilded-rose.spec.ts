@@ -1,5 +1,6 @@
-import { expect } from 'chai';
-import { Item, GildedRose } from '../app/gilded-rose'
+import { expect } from 'chai'
+import { GildedRose } from '../app/gilded-rose'
+import { Item } from '../app/item'
 
 describe("Gilded Rose", function() {
   it("Should decrease sellIn value when is a commun item", function() {
