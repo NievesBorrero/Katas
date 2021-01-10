@@ -20,11 +20,11 @@ export abstract class Item {
         return this.itemSellIn.value
     }
 
-    abstract update()
-
     get name(): string {
         return this._name
     }
+
+    abstract update()
 
     increaseQuality () {
         this.itemQuality = this.itemQuality.increase()
