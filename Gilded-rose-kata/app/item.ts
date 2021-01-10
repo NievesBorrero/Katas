@@ -1,7 +1,7 @@
 import { ItemQuality } from "./ItemQuality"
 import { ItemSellIn } from "./ItemSellIn"
 
-export class Item {
+export abstract class Item {
     private _name: string
     private itemSellIn: ItemSellIn
     private itemQuality: ItemQuality
@@ -19,6 +19,8 @@ export class Item {
     get sellIn(): number {
         return this.itemSellIn.value
     }
+
+    abstract update()
 
     get name(): string {
         return this._name
@@ -38,5 +40,9 @@ export class Item {
 
     decreaseSellIn () {
         this.itemSellIn = this.itemSellIn.decrease()
+    }
+
+    hasPassedDayToSell(dayToSell: number) {
+        return this.itemSellIn.value < dayToSell
     }
 }
