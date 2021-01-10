@@ -25,18 +25,18 @@ export class Item {
     }
 
     increaseQuality () {
-        this.itemQuality.increase()
+        this.itemQuality = this.itemQuality.increase()
     }
 
     decreaseQuality () {
-        this.itemQuality.decrease()
+        this.itemQuality = this.itemQuality.decrease()
     }
 
     resetQuality () {
-        this.itemQuality.reset()
+        this.itemQuality = this.itemQuality.reset()
     }
 
     decreaseSellIn () {
-        this.itemSellIn.decrease()
+        this.itemSellIn = this.itemSellIn.decrease()
     }
 }

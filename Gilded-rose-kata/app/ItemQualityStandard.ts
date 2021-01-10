@@ -1,4 +1,4 @@
-import { ItemQualityOutOfRangeException } from "./errors"
+import { ItemQualityOutOfRangeException } from "./errors/ItemQualityOutOfRangeException"
 import { ItemQuality } from "./ItemQuality"
 
 export class ItemQualityStandard implements ItemQuality{
@@ -32,8 +32,6 @@ export class ItemQualityStandard implements ItemQuality{
     }
 
     reset = () => {
-        this._value = 0;
-        return this;
-        // return new ItemQualityStandard(this.MIN_VALUE)
+        return new ItemQualityStandard(this.MIN_VALUE)
     }
 }
