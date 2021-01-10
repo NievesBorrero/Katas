@@ -1,7 +1,7 @@
 import {
     BACKSTAGE_PASS_DAY_LIMIT,
     LIMIT_SELL_IN, ITEM_NAME
-} from "./constants"
+} from "./constants/constants"
 import { Item } from "./item"
 
 

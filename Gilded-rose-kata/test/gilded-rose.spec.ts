@@ -139,6 +139,6 @@ describe("Gilded Rose", function() {
     expect(items[0].quality).to.equal(expectedResult)
   })
 
- // TODO tests to conjured item: “Conjured” items degrade in Quality twice as fast as normal items
+ // TODO tests to conjured item: “Conjured Mana Cake” items degrade in Quality twice as fast as normal items
 
 });
