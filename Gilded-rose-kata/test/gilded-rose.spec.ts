@@ -1,10 +1,8 @@
-import { assert, expect } from 'chai'
+import { expect } from 'chai'
 import { GildedRose } from '../app/GildedRose'
-import { ItemName } from '../app/ItemName'
 import { ItemFactory } from '../app/ItemFactory'
 import { ITEM_NAME } from '../app/constants/item_name'
 import { ItemQualityStandard } from '../app/ItemQualityStandard'
-import { ItemQualityOutOfRangeException } from '../app/errors/ItemQualityOutOfRangeException'
 
 describe("Gilded Rose", function() {
   it("Should decrease sellIn value when is a commun item", function() {
@@ -91,7 +89,6 @@ describe("Gilded Rose", function() {
   })
 
   it("should increase the quality by two when it is backstage pass and sellIn is smaller than ten", function() {
-    const itemName = new ItemName(ITEM_NAME.BACKSTAGE_PASSES)
     const item = ItemFactory.basedOn(ITEM_NAME.BACKSTAGE_PASSES, 9, 2)
     const gildedRose = new GildedRose([item])
     const expectedResult = 4
@@ -121,6 +118,22 @@ describe("Gilded Rose", function() {
     expect(items[0].quality).to.equal(expectedResult)
   })
 
-  // TODO tests to conjured item: “Conjured Mana Cake” items degrade in Quality twice as fast as normal items
+  it("should not allow a quality bellow zero when it is a standard item", function() {
+    const errorMessage = 'Item quality should be between 0 - 50'
+
+    expect(() => {
+      new ItemQualityStandard(-1)
+    }).to.throw(Error, errorMessage)
+  })
+
+  it("should not allow a quality over fifty when it is a standard item", function() {
+    const errorMessage = 'Item quality should be between 0 - 50'
+
+    expect(() => {
+      new ItemQualityStandard(51)
+    }).to.throw(Error, errorMessage)
+  })
+
+ // TODO tests to conjured item: “Conjured Mana Cake” items degrade in Quality twice as fast as normal items
 
 });
