@@ -7,7 +7,7 @@ export class BackstagePass extends Item {
         TRIPLE: 5
     }
 
-    update() {
+    update(): void {
         this.decreaseSellIn()
         this.increaseQuality()
 

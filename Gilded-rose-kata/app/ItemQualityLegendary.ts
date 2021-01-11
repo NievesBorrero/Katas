@@ -11,9 +11,9 @@ export class ItemQualityLegendary implements ItemQuality{
         return this._value
     }
 
-    increase = () => this
+    increase = (): ItemQualityLegendary => this
 
-    decrease = () => this
+    decrease = (): ItemQualityLegendary => this
 
-    reset = () => this
+    reset = () : ItemQualityLegendary=> this
 }

@@ -10,7 +10,7 @@ export class ItemSellIn {
         return this._value
     }
 
-    decrease() {
+    decrease(): ItemSellIn {
         return new ItemSellIn(this._value -= this.SELL_IN_UNIT)
     }
 

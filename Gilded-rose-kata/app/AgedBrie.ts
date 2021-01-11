@@ -3,7 +3,7 @@ import { Item } from "./Item"
 export class AgedBrie extends Item {
     LIMIT_SELL_IN = 0
 
-    update() {
+    update(): void {
         this.decreaseSellIn()
 
         this.increaseQuality()
