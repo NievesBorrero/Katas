@@ -1,13 +1,14 @@
+import { ItemName } from "./ItemName"
 import { ItemQuality } from "./ItemQuality"
 import { ItemSellIn } from "./ItemSellIn"
 
 export abstract class Item {
-    private _name: string
+    private itemName: ItemName
     private itemSellIn: ItemSellIn
     private itemQuality: ItemQuality
 
-    constructor (name: string, itemSellIn: ItemSellIn, itemQuality: ItemQuality) {
-        this._name = name
+    constructor (name: ItemName, itemSellIn: ItemSellIn, itemQuality: ItemQuality) {
+        this.itemName = name
         this.itemSellIn = itemSellIn
         this.itemQuality = itemQuality
     }
@@ -21,28 +22,28 @@ export abstract class Item {
     }
 
     get name(): string {
-        return this._name
+        return this.itemName.value
     }
 
-    abstract update()
+    abstract update(): void
 
-    increaseQuality () {
+    increaseQuality (): void {
         this.itemQuality = this.itemQuality.increase()
     }
 
-    decreaseQuality () {
+    decreaseQuality (): void {
         this.itemQuality = this.itemQuality.decrease()
     }
 
-    resetQuality () {
+    resetQuality (): void {
         this.itemQuality = this.itemQuality.reset()
     }
 
-    decreaseSellIn () {
+    decreaseSellIn (): void {
         this.itemSellIn = this.itemSellIn.decrease()
     }
 
-    hasPassedDayToSell(dayToSell: number) {
+    hasPassedDayToSell(dayToSell: number): boolean {
         return this.itemSellIn.value < dayToSell
     }
 }

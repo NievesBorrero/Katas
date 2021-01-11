@@ -8,7 +8,7 @@ export class GildedRose {
         this.items = items;
     }
 
-    updateQuality() {
+    updateQuality(): Array<Item> {
         this.items.map((item) => item.update())
 
         return this.items

@@ -19,19 +19,19 @@ export class ItemQualityStandard implements ItemQuality{
         return this._value
     }
 
-    increase = () => {
+    increase = (): ItemQualityStandard => {
         if(this._value == this.MAX_VALUE) return this
 
         return new ItemQualityStandard(this._value += this.QUALITY_UNIT)
     }
 
-    decrease = () => {
+    decrease = (): ItemQualityStandard => {
         if(this._value == this.MIN_VALUE) return this
 
         return new ItemQualityStandard(this._value -= this.QUALITY_UNIT)
     }
 
-    reset = () => {
+    reset = (): ItemQualityStandard => {
         return new ItemQualityStandard(this.MIN_VALUE)
     }
 }
