@@ -4,6 +4,7 @@ export class ItemName {
     private readonly AGED_BRIE: string = ITEM_NAME.AGED_BRIE
     private readonly BACKSTAGE_PASSES: string = ITEM_NAME.BACKSTAGE_PASSES
     private readonly SULFURAS: string = ITEM_NAME.SULFURAS
+    private readonly CONJURED: string = ITEM_NAME.CONJURED
 
     value: string
 
@@ -21,5 +22,9 @@ export class ItemName {
 
     isSulfuras(): boolean {
         return this.SULFURAS === this.value
+    }
+
+    isConjured(): boolean {
+        return this.CONJURED === this.value
     }
 }

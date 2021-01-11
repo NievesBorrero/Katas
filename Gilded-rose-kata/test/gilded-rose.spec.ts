@@ -5,7 +5,7 @@ import { ITEM_NAME } from '../app/constants/item_name'
 import { ItemQualityStandard } from '../app/ItemQualityStandard'
 
 describe("Gilded Rose", function() {
-  it("Should decrease sellIn value when is a commun item", function() {
+  it("Should decrease sellIn value when is a standard item", function() {
     const item = ItemFactory.basedOn("any item", 10, 1)
     const gildedRose = new GildedRose([item])
     const expectedResult = 9
@@ -16,7 +16,7 @@ describe("Gilded Rose", function() {
 
   })
 
-  it("Should decrease quality value when is a commun item", function() {
+  it("Should decrease quality value when is a standard item", function() {
     const item = ItemFactory.basedOn("any item", 1, 10)
     const gildedRose = new GildedRose([item])
     const expectedResult = 9
@@ -56,7 +56,7 @@ describe("Gilded Rose", function() {
     expect(items[0].quality).to.equal(expectedResult)
   })
 
-  it("should not increase the quality when it when fifty", function() {
+  it("should not increase the quality when it is fifty", function() {
     const item = ItemFactory.basedOn(ITEM_NAME.AGED_BRIE, 1, 50)
     const gildedRose = new GildedRose([item])
     const expectedResult = 50
@@ -134,6 +134,25 @@ describe("Gilded Rose", function() {
     }).to.throw(Error, errorMessage)
   })
 
- // TODO tests to conjured item: “Conjured Mana Cake” items degrade in Quality twice as fast as normal items
+  it("Should decrease quality value twice when is Conjured Mana Cake", function() {
+    const item = ItemFactory.basedOn(ITEM_NAME.CONJURED, 1, 10)
+    const gildedRose = new GildedRose([item])
+    const expectedResult = 8
+
+    const items = gildedRose.updateQuality()
+
+    expect(items[0].quality).to.equal(expectedResult)
+  })
+
+  it("Should decrease the quality fourfold as fast when the sell by date has \
+    passed and it is Conjured Mana Cake", function() {
+    const item = ItemFactory.basedOn(ITEM_NAME.CONJURED, 0, 10)
+    const gildedRose = new GildedRose([item])
+    const expectedResult = 6
+
+    const items = gildedRose.updateQuality()
+
+    expect(items[0].quality).to.equal(expectedResult)
+  })
 
 });
